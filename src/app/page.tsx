@@ -35,7 +35,7 @@ export default function Home() {
         <section className="grain relative overflow-hidden">
           <div className="absolute inset-0">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/hero.jpg" alt="" className="h-full w-full object-cover opacity-50" />
+            <img src="/images/hero.svg" alt="" className="h-full w-full object-cover opacity-50" />
             <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/30" />
             <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-ink/40" />
           </div>

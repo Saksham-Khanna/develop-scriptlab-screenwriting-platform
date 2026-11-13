@@ -62,7 +62,7 @@ const COURSES: CourseSeed[] = [
     level: "beginner" as const,
     weeks: 6,
     featured: true,
-    cover: "/images/course-commercial.jpg",
+    cover: "/images/course-commercial.svg",
     outcomes: [
       "Evaluate a premise for commercial viability before writing a page",
       "Write a logline and one-page pitch that communicates genre, hook and stakes",
@@ -101,7 +101,7 @@ const COURSES: CourseSeed[] = [
     level: "advanced" as const,
     weeks: 8,
     featured: true,
-    cover: "/images/course-tv.jpg",
+    cover: "/images/course-tv.svg",
     outcomes: [
       "Architect a returning series pilot with an infinite episodic engine",
       "Write a professional 15-page series bible and pitch deck",

@@ -48,7 +48,7 @@ export function AuthForm({ mode }: { mode: "login" | "register" }) {
     <div className="grain relative grid min-h-screen lg:grid-cols-2">
       <div className="relative hidden overflow-hidden lg:block">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/images/hero.jpg" alt="" className="absolute inset-0 h-full w-full object-cover opacity-60" />
+        <img src="/images/hero.svg" alt="" className="absolute inset-0 h-full w-full object-cover opacity-60" />
         <div className="absolute inset-0 bg-gradient-to-br from-ink/40 via-ink/60 to-ink" />
         <div className="relative flex h-full flex-col justify-between p-12">
           <Logo />

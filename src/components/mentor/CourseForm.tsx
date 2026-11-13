@@ -20,7 +20,7 @@ export function CourseForm({ initial, onSaved }: { initial?: CourseFormValues; o
   const toast = useToast();
   const [cats, setCats] = useState<Cat[]>([]);
   const [instructors, setInstructors] = useState<Inst[]>([]);
-  const [v, setV] = useState<CourseFormValues>(initial ?? { title: "", tagline: "", description: "", categoryId: 0, instructorId: user?.id ?? 0, level: "beginner", durationWeeks: 4, coverImage: "/images/course-commercial.jpg", outcomes: [""], isPublished: true, isFeatured: false });
+  const [v, setV] = useState<CourseFormValues>(initial ?? { title: "", tagline: "", description: "", categoryId: 0, instructorId: user?.id ?? 0, level: "beginner", durationWeeks: 4, coverImage: "/images/course-commercial.svg", outcomes: [""], isPublished: true, isFeatured: false });
   const [busy, setBusy] = useState(false);
 
   useEffect(() => {
@@ -79,7 +79,7 @@ export function CourseForm({ initial, onSaved }: { initial?: CourseFormValues; o
       <Field label="Cover image">
         <div className="grid grid-cols-5 gap-2 sm:grid-cols-9">
           {covers.map((c) => {
-            const src = `/images/course-${c}.jpg`;
+            const src = `/images/course-${c}.svg`;
             return (
               <button type="button" key={c} onClick={() => setV({ ...v, coverImage: src })} className={`aspect-video overflow-hidden rounded border-2 transition ${v.coverImage === src ? "border-gold" : "border-transparent opacity-60 hover:opacity-100"}`}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}

@@ -278,7 +278,7 @@ app.post("/api/courses", requireAuth, requireRole("admin", "instructor"), async 
       ...body,
       instructorId,
       slug,
-      coverImage: body.coverImage || "/images/course-commercial.jpg",
+      coverImage: body.coverImage || "/images/course-commercial.svg",
     });
 
     await logActivity(req.user!.id, "course.created", course.title);
