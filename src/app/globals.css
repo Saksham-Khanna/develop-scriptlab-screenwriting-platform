@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0c0b0a;
+  --color-charcoal: #161412;
+  --color-slate: #1f1c19;
+  --color-line: #2c2824;
+  --color-ivory: #f3ebdd;
+  --color-parchment: #d8cdb8;
+  --color-muted: #9a8f7c;
+  --color-gold: #c9a24d;
+  --color-gold-soft: #e0c37a;
+  --color-amber: #b8862b;
+  --font-serif: "Cormorant Garamond", "Georgia", "Times New Roman", serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background-color: var(--color-ink);
+  color: var(--color-ivory);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--color-gold); color: var(--color-ink); }
+
+.font-display { font-family: var(--font-serif); letter-spacing: -0.01em; }
+
+.grain::before {
+  content: "";
+  position: absolute; inset: 0; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  opacity: 0.06; mix-blend-mode: overlay;
+}
+
+.prose-lesson h2 { font-family: var(--font-serif); font-size: 1.75rem; color: var(--color-ivory); margin: 2rem 0 0.75rem; line-height: 1.2; }
+.prose-lesson h3 { font-size: 1.05rem; font-weight: 600; color: var(--color-gold-soft); margin: 1.75rem 0 0.5rem; letter-spacing: 0.02em; }
+.prose-lesson p { color: var(--color-parchment); line-height: 1.8; margin: 0.9rem 0; }
+.prose-lesson ul, .prose-lesson ol { color: var(--color-parchment); line-height: 1.75; margin: 0.75rem 0 0.75rem 1.25rem; }
+.prose-lesson ul { list-style: disc; } .prose-lesson ol { list-style: decimal; }
+.prose-lesson li { margin: 0.3rem 0; }
+.prose-lesson strong { color: var(--color-ivory); font-weight: 600; }
+.prose-lesson em { color: var(--color-ivory); }
+.prose-lesson code { font-family: "Courier Prime", "Courier New", monospace; background: var(--color-slate); padding: 0.1rem 0.35rem; border-radius: 3px; font-size: 0.92em; color: var(--color-gold-soft); }
+.prose-lesson blockquote { border-left: 2px solid var(--color-gold); padding: 0.5rem 1.25rem; margin: 1.25rem 0; color: var(--color-ivory); font-family: "Courier Prime", "Courier New", monospace; font-size: 0.95rem; background: rgba(201,162,77,0.04); white-space: pre-wrap; }
+.prose-lesson table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.92rem; }
+.prose-lesson th { text-align: left; color: var(--color-gold-soft); font-weight: 600; padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--color-gold); }
+.prose-lesson td { padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--color-line); color: var(--color-parchment); vertical-align: top; }
+
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.animate-rise { animation: rise 0.7s cubic-bezier(.2,.7,.2,1) both; }
+.delay-1 { animation-delay: .12s } .delay-2 { animation-delay: .24s } .delay-3 { animation-delay: .36s }
+
+.scrollbar-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+.scrollbar-thin::-webkit-scrollbar-thumb { background: var(--color-line); border-radius: 3px; }
