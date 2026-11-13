@@ -1,0 +1,34 @@
+{
+  "name": "scriptlab-screenwriting-platform",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run dev:server\" \"next dev --webpack\"",
+    "dev:server": "cd backend && npm run dev",
+    "seed": "cd backend && npm run seed",
+    "build": "next build --webpack",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "dotenv": "17.3.1",
+    "jose": "^6.2.17",
+    "next": "16.4.2",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.1.17",
+    "@types/node": "22.19.15",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "concurrently": "^9.1.2",
+    "eslint": "9.39.4",
+    "eslint-config-next": "16.4.2",
+    "postcss": "8.5.23",
+    "tailwindcss": "4.1.17",
+    "typescript": "5.9.3"
+  }
+}
