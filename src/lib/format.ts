@@ -25,6 +25,22 @@ export const roleHome: Record<string, string> = { student: "/dashboard", instruc
 
 export const levelLabel: Record<string, string> = { beginner: "Foundation", intermediate: "Intermediate", advanced: "Advanced" };
 
+/** Returns a thematic fallback cover image path based on category name. */
+export function courseCoverFallback(categoryName: string): string {
+  const n = categoryName.toLowerCase();
+  if (n.includes("structure") || n.includes("three-act") || n.includes("five-act")) return "/images/course-structure.svg";
+  if (n.includes("character")) return "/images/course-character.svg";
+  if (n.includes("dialogue") || n.includes("scene")) return "/images/course-dialogue.svg";
+  if (n.includes("break") || n.includes("story break")) return "/images/course-breaking.svg";
+  if (n.includes("writers") || n.includes("room") || n.includes("collaboration")) return "/images/course-room.svg";
+  if (n.includes("table read") || n.includes("critique")) return "/images/course-tableread.svg";
+  if (n.includes("doctor") || n.includes("doctoring")) return "/images/course-doctoring.svg";
+  if (n.includes("rewrite") || n.includes("roadmap")) return "/images/course-rewrite.svg";
+  if (n.includes("tv") || n.includes("television") || n.includes("showrunner")) return "/images/course-tv.svg";
+  if (n.includes("commercial") || n.includes("spec")) return "/images/course-commercial.svg";
+  return "/images/hero.svg";
+}
+
 /** Minimal markdown renderer for lesson content (headings, lists, tables, blockquotes, bold/italic/code). */
 export function renderMarkdown(md: string): string {
   const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
