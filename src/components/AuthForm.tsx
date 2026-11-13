@@ -46,10 +46,8 @@ export function AuthForm({ mode }: { mode: "login" | "register" }) {
 
   return (
     <div className="grain relative grid min-h-screen lg:grid-cols-2">
-      <div className="relative hidden overflow-hidden lg:block">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/images/hero.svg" alt="" className="absolute inset-0 h-full w-full object-cover opacity-60" />
-        <div className="absolute inset-0 bg-gradient-to-br from-ink/40 via-ink/60 to-ink" />
+      <div className="relative hidden overflow-hidden bg-gradient-to-br from-ink via-charcoal to-ink lg:block">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(201,162,77,0.12),transparent_70%)]" />
         <div className="relative flex h-full flex-col justify-between p-12">
           <Logo />
           <div>

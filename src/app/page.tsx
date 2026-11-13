@@ -32,13 +32,8 @@ export default function Home() {
       <Navbar />
       <main>
         {/* HERO */}
-        <section className="grain relative overflow-hidden">
-          <div className="absolute inset-0">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/hero.svg" alt="" className="h-full w-full object-cover opacity-50" />
-            <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/30" />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-ink/40" />
-          </div>
+        <section className="grain relative overflow-hidden bg-gradient-to-br from-ink via-charcoal to-ink">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(201,162,77,0.15),transparent_70%)]" />
           <div className="relative mx-auto flex min-h-[88vh] max-w-7xl flex-col justify-center px-5 py-24 lg:px-8">
             <p className="animate-rise mb-5 text-[11px] font-semibold uppercase tracking-[0.3em] text-gold">Commercial Screenwriting & Script Doctoring Lab</p>
             <h1 className="animate-rise delay-1 max-w-3xl font-display text-5xl font-medium leading-[1.05] text-ivory sm:text-6xl lg:text-7xl">
