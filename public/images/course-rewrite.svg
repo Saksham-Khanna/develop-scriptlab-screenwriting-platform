@@ -1,6 +1,51 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
-  <defs><linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0f1115"/><stop offset="100%" stop-color="#1a1d24"/></linearGradient></defs>
-  <rect width="800" height="500" fill="url(#bg)" />
-  <text x="400" y="240" font-family="Georgia, serif" font-size="32" fill="#f4f1ea" text-anchor="middle" letter-spacing="3">REWRITE ROADMAPS</text>
-  <text x="400" y="280" font-family="system-ui" font-size="13" fill="#c9a24d" text-anchor="middle" letter-spacing="5">DRAFTS TWO THROUGH TEN</text>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d0f13"/>
+      <stop offset="100%" stop-color="#14161c"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#c9a24d" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#c9a24d" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c9a24d" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#c9a24d"/>
+      <stop offset="100%" stop-color="#c9a24d" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <rect width="800" height="500" fill="url(#glow)"/>
+
+  <!-- Rewrite cycle arrows -->
+  <g opacity="0.45">
+    <!-- Draft 1 circle -->
+    <circle cx="250" cy="230" r="80" fill="none" stroke="#c9a24d" stroke-width="1.5" stroke-dasharray="6,3"/>
+    <text x="250" y="225" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#f4f1ea" opacity="0.7">DRAFT 1</text>
+    <text x="250" y="244" text-anchor="middle" font-family="system-ui" font-size="9" fill="#c9a24d" opacity="0.5" letter-spacing="2">INSTINCT</text>
+
+    <!-- Arrow right -->
+    <path d="M 335 210 Q 400 160 465 210" fill="none" stroke="#c9a24d" stroke-width="1.5" marker-end="url(#arrow)" opacity="0.6"/>
+    <polygon points="460,206 470,218 450,220" fill="#c9a24d" opacity="0.5"/>
+    <text x="400" y="176" text-anchor="middle" font-family="system-ui" font-size="9" fill="#c9a24d" letter-spacing="2" opacity="0.6">NOTES</text>
+
+    <!-- Draft 2 circle -->
+    <circle cx="550" cy="230" r="80" fill="none" stroke="#c9a24d" stroke-width="1.5" stroke-dasharray="6,3"/>
+    <text x="550" y="225" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#f4f1ea" opacity="0.7">REWRITE</text>
+    <text x="550" y="244" text-anchor="middle" font-family="system-ui" font-size="9" fill="#c9a24d" opacity="0.5" letter-spacing="2">STRUCTURE</text>
+
+    <!-- Arrow looping back (left-bottom) -->
+    <path d="M 480 290 Q 400 360 320 290" fill="none" stroke="#c9a24d" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
+    <polygon points="324,286 314,296 324,304" fill="#c9a24d" opacity="0.3"/>
+    <text x="400" y="378" text-anchor="middle" font-family="system-ui" font-size="9" fill="#c9a24d" letter-spacing="2" opacity="0.4">POLISH PASS</text>
+
+    <!-- Pass labels around -->
+    <text x="130" y="160" font-family="system-ui" font-size="9" fill="#c9a24d" letter-spacing="1" opacity="0.4">STRUCTURE PASS</text>
+    <text x="130" y="300" font-family="system-ui" font-size="9" fill="#c9a24d" letter-spacing="1" opacity="0.4">DIALOGUE PASS</text>
+    <text x="600" y="160" font-family="system-ui" font-size="9" fill="#c9a24d" letter-spacing="1" opacity="0.4">CHARACTER PASS</text>
+  </g>
+
+  <rect x="80" y="430" width="640" height="1" fill="url(#gold)" opacity="0.4"/>
+  <text x="400" y="460" text-anchor="middle" font-family="Georgia,serif" font-size="22" fill="#f4f1ea" letter-spacing="4" opacity="0.9">THE REWRITE</text>
+  <text x="400" y="478" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#c9a24d" letter-spacing="6" opacity="0.8">PASS-BY-PASS STRATEGY &#xB7; SCRIPTLAB</text>
 </svg>

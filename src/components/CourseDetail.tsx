@@ -7,7 +7,7 @@ import { api } from "@/lib/api";
 import { useAuth } from "@/components/providers/AuthProvider";
 import { useToast } from "@/components/ui/Toast";
 import { Alert, Badge, Button, ButtonLink, PageLoader, Progress } from "@/components/ui";
-import { levelLabel } from "@/lib/format";
+import { levelLabel, courseCoverFallback } from "@/lib/format";
 
 export interface CourseFull {
   id: number; title: string; tagline: string; description: string; level: string; durationWeeks: number; coverImage: string | null;
@@ -52,10 +52,12 @@ export function CourseDetail({ id }: { id: string }) {
   return (
     <main>
       <section className="relative overflow-hidden border-b border-line">
-        {course.coverImage && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={course.coverImage} alt="" className="absolute inset-0 h-full w-full object-cover opacity-30" />
-        )}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={course.coverImage ?? courseCoverFallback(course.categoryName)}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover opacity-30"
+        />
         <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/90 to-ink/50" />
         <div className="relative mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-24">
           <div className="flex flex-wrap items-center gap-2">

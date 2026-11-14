@@ -12,6 +12,7 @@ import {
   Submission,
   Feedback,
   ActivityLog,
+  Counter,
 } from "./models/index.js";
 
 async function hashPassword(pw: string) {
@@ -62,7 +63,7 @@ const COURSES: CourseSeed[] = [
     level: "beginner" as const,
     weeks: 6,
     featured: true,
-    cover: "/images/course-commercial.svg",
+    cover: "/images/course-commercial.png",
     outcomes: [
       "Evaluate a premise for commercial viability before writing a page",
       "Write a logline and one-page pitch that communicates genre, hook and stakes",
@@ -101,7 +102,7 @@ const COURSES: CourseSeed[] = [
     level: "advanced" as const,
     weeks: 8,
     featured: true,
-    cover: "/images/course-tv.svg",
+    cover: "/images/course-tv.png",
     outcomes: [
       "Architect a returning series pilot with an infinite episodic engine",
       "Write a professional 15-page series bible and pitch deck",
@@ -150,7 +151,7 @@ export async function seedDatabase(shouldDisconnectAndExit = true) {
     Submission.deleteMany({}),
     Feedback.deleteMany({}),
     ActivityLog.deleteMany({}),
-    mongoose.model("Counter").deleteMany({})
+    Counter.deleteMany({})
   ]);
 
   console.log("Seeding users...");

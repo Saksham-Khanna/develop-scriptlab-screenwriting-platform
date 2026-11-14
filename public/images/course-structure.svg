@@ -1,6 +1,52 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
-  <defs><linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0f1115"/><stop offset="100%" stop-color="#1a1d24"/></linearGradient></defs>
-  <rect width="800" height="500" fill="url(#bg)" />
-  <text x="400" y="240" font-family="Georgia, serif" font-size="32" fill="#f4f1ea" text-anchor="middle" letter-spacing="3">STORY STRUCTURE</text>
-  <text x="400" y="280" font-family="system-ui" font-size="13" fill="#c9a24d" text-anchor="middle" letter-spacing="5">ARCHITECTURE</text>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d0f13"/>
+      <stop offset="100%" stop-color="#161920"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#c9a24d" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#c9a24d" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c9a24d" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#c9a24d"/>
+      <stop offset="100%" stop-color="#c9a24d" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <rect width="800" height="500" fill="url(#glow)"/>
+
+  <!-- Three-act structure pillars -->
+  <g opacity="0.5">
+    <!-- Act I -->
+    <rect x="90" y="160" width="150" height="220" rx="2" fill="none" stroke="#c9a24d" stroke-width="1.5"/>
+    <rect x="90" y="160" width="150" height="40" fill="#c9a24d" opacity="0.15"/>
+    <text x="165" y="186" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#c9a24d" letter-spacing="3">ACT I</text>
+
+    <!-- Act II -->
+    <rect x="275" y="100" width="250" height="280" rx="2" fill="none" stroke="#c9a24d" stroke-width="1.5"/>
+    <rect x="275" y="100" width="250" height="40" fill="#c9a24d" opacity="0.15"/>
+    <text x="400" y="126" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#c9a24d" letter-spacing="3">ACT II</text>
+
+    <!-- Act III -->
+    <rect x="560" y="200" width="150" height="180" rx="2" fill="none" stroke="#c9a24d" stroke-width="1.5"/>
+    <rect x="560" y="200" width="150" height="40" fill="#c9a24d" opacity="0.15"/>
+    <text x="635" y="226" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#c9a24d" letter-spacing="3">ACT III</text>
+
+    <!-- Story arc line -->
+    <path d="M 90 380 Q 400 50 710 380" fill="none" stroke="#c9a24d" stroke-width="1" opacity="0.4" stroke-dasharray="6,4"/>
+
+    <!-- Turning point markers -->
+    <circle cx="240" cy="230" r="6" fill="#c9a24d" opacity="0.7"/>
+    <circle cx="400" cy="140" r="6" fill="#c9a24d" opacity="0.7"/>
+    <circle cx="560" cy="260" r="6" fill="#c9a24d" opacity="0.7"/>
+  </g>
+
+  <!-- Gold line -->
+  <rect x="80" y="430" width="640" height="1" fill="url(#gold)" opacity="0.5"/>
+
+  <!-- Label -->
+  <text x="400" y="460" text-anchor="middle" font-family="Georgia,serif" font-size="22" fill="#f4f1ea" letter-spacing="4" opacity="0.9">STORY STRUCTURE</text>
+  <text x="400" y="480" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#c9a24d" letter-spacing="6" opacity="0.8">ARCHITECTURE &#xB7; SCRIPTLAB</text>
 </svg>

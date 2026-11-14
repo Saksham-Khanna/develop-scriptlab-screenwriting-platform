@@ -1,6 +1,61 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
-  <defs><linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0f1115"/><stop offset="100%" stop-color="#1a1d24"/></linearGradient></defs>
-  <rect width="800" height="500" fill="url(#bg)" />
-  <text x="400" y="240" font-family="Georgia, serif" font-size="32" fill="#f4f1ea" text-anchor="middle" letter-spacing="3">TABLE READS</text>
-  <text x="400" y="280" font-family="system-ui" font-size="13" fill="#c9a24d" text-anchor="middle" letter-spacing="5">CRITIQUES &amp; NOTES</text>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d0f13"/>
+      <stop offset="100%" stop-color="#161820"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#c9a24d" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#c9a24d" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c9a24d" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#c9a24d"/>
+      <stop offset="100%" stop-color="#c9a24d" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <rect width="800" height="500" fill="url(#glow)"/>
+
+  <!-- Microphone stand (table read setting) -->
+  <g opacity="0.5">
+    <!-- Mic head -->
+    <ellipse cx="300" cy="130" rx="30" ry="40" fill="none" stroke="#c9a24d" stroke-width="2"/>
+    <!-- Mic grid lines -->
+    <line x1="275" y1="115" x2="325" y2="115" stroke="#c9a24d" stroke-width="0.8" opacity="0.5"/>
+    <line x1="273" y1="128" x2="327" y2="128" stroke="#c9a24d" stroke-width="0.8" opacity="0.5"/>
+    <line x1="275" y1="141" x2="325" y2="141" stroke="#c9a24d" stroke-width="0.8" opacity="0.5"/>
+    <!-- Mic stand -->
+    <line x1="300" y1="170" x2="300" y2="310" stroke="#c9a24d" stroke-width="2"/>
+    <!-- Base -->
+    <ellipse cx="300" cy="315" rx="50" ry="10" fill="none" stroke="#c9a24d" stroke-width="1.5"/>
+
+    <!-- Script on stand -->
+    <rect x="210" y="230" width="130" height="80" rx="2" fill="#f4f1ea" opacity="0.07" stroke="#c9a24d" stroke-width="1"/>
+    <rect x="220" y="245" width="110" height="3" rx="1" fill="#c9a24d" opacity="0.3"/>
+    <rect x="220" y="255" width="90" height="3" rx="1" fill="#c9a24d" opacity="0.3"/>
+    <rect x="245" y="265" width="60" height="3" rx="1" fill="#c9a24d" opacity="0.2"/>
+    <rect x="220" y="275" width="100" height="3" rx="1" fill="#c9a24d" opacity="0.3"/>
+    <rect x="220" y="285" width="80" height="3" rx="1" fill="#c9a24d" opacity="0.2"/>
+
+    <!-- Second mic (right side) -->
+    <ellipse cx="500" cy="145" rx="22" ry="30" fill="none" stroke="#c9a24d" stroke-width="1.5" opacity="0.6"/>
+    <line x1="500" y1="175" x2="500" y2="310" stroke="#c9a24d" stroke-width="1.5" opacity="0.6"/>
+    <ellipse cx="500" cy="315" rx="38" ry="8" fill="none" stroke="#c9a24d" stroke-width="1" opacity="0.5"/>
+
+    <!-- Sound waves from mic -->
+    <path d="M 340 110 Q 360 130 340 150" fill="none" stroke="#c9a24d" stroke-width="1" opacity="0.4"/>
+    <path d="M 355 100 Q 385 130 355 160" fill="none" stroke="#c9a24d" stroke-width="0.8" opacity="0.25"/>
+    <path d="M 370 90 Q 410 130 370 170" fill="none" stroke="#c9a24d" stroke-width="0.6" opacity="0.15"/>
+  </g>
+
+  <!-- TABLE label -->
+  <g opacity="0.3">
+    <rect x="130" y="315" width="540" height="8" rx="2" fill="#c9a24d"/>
+    <text x="400" y="340" text-anchor="middle" font-family="system-ui" font-size="9" fill="#c9a24d" letter-spacing="5" opacity="0.5">THE TABLE READ</text>
+  </g>
+
+  <rect x="80" y="410" width="640" height="1" fill="url(#gold)" opacity="0.4"/>
+  <text x="400" y="445" text-anchor="middle" font-family="Georgia,serif" font-size="22" fill="#f4f1ea" letter-spacing="4" opacity="0.9">TABLE READ</text>
+  <text x="400" y="465" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#c9a24d" letter-spacing="6" opacity="0.8">PERFORMANCE &#xB7; FEEDBACK &#xB7; LIVE READ &#xB7; SCRIPTLAB</text>
 </svg>
