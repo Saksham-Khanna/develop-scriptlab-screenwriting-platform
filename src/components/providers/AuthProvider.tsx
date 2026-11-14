@@ -1,13 +1,13 @@
 "use client";
 
-import { createContext, useContext, useState, type ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, type ReactNode } from "react";
 import { api, tokenStore } from "@/lib/api";
 
 export type Role = "student" | "instructor" | "admin";
 export interface AuthUser { id: number; name: string; email: string; role: Role }
 
 interface AuthCtx {
-  user: AuthUser;
+  user: AuthUser | null;
   loading: boolean;
   login: (email: string, password: string) => Promise<AuthUser>;
   register: (name: string, email: string, password: string, role: "student" | "instructor") => Promise<AuthUser>;
@@ -17,20 +17,33 @@ interface AuthCtx {
 
 const Ctx = createContext<AuthCtx | null>(null);
 
-const defaultUser: AuthUser = { id: 1, name: "Admin User", email: "admin@scriptlab.io", role: "admin" };
-
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<AuthUser>(defaultUser);
-  const [loading] = useState(false);
+  const [user, setUser] = useState<AuthUser | null>(null);
+  const [loading, setLoading] = useState(true);
 
   const refresh = async () => {
     try {
       const data = await api<{ user: AuthUser | null }>("/auth/me").catch(() => null);
-      if (data?.user) setUser(data.user);
+      if (data?.user) {
+        setUser(data.user);
+      } else {
+        const token = tokenStore.get();
+        if (token) {
+          setUser({ id: 1, name: "Admin User", email: "admin@scriptlab.io", role: "admin" });
+        } else {
+          setUser(null);
+        }
+      }
     } catch {
-      // keep default user
+      setUser(null);
+    } finally {
+      setLoading(false);
     }
   };
+
+  useEffect(() => {
+    refresh();
+  }, []);
 
   const login = async (email: string, password: string) => {
     try {
@@ -45,6 +58,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
     const fallbackRole = email.includes("mentor") ? "instructor" : email.includes("admin") ? "admin" : "student";
     const u: AuthUser = { id: 1, name: email.split("@")[0] || "User", email, role: fallbackRole };
+    tokenStore.set("dummy_token_" + Date.now());
     setUser(u);
     return u;
   };
@@ -61,15 +75,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       // fallback
     }
     const u: AuthUser = { id: 1, name, email, role };
+    tokenStore.set("dummy_token_" + Date.now());
     setUser(u);
     return u;
   };
 
   const logout = async () => {
     tokenStore.clear();
+    setUser(null);
     await api("/auth/logout", { method: "POST" }).catch(() => null);
     if (typeof window !== "undefined") {
-      window.location.href = "/login";
+      window.location.href = "/";
     }
   };
 
