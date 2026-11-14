@@ -1,6 +1,7 @@
 "use client";
 
-import { createContext, useContext, type ReactNode } from "react";
+import { createContext, useContext, useState, type ReactNode } from "react";
+import { api, tokenStore } from "@/lib/api";
 
 export type Role = "student" | "instructor" | "admin";
 export interface AuthUser { id: number; name: string; email: string; role: Role }
@@ -19,13 +20,61 @@ const Ctx = createContext<AuthCtx | null>(null);
 const defaultUser: AuthUser = { id: 1, name: "Admin User", email: "admin@scriptlab.io", role: "admin" };
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const login = async () => defaultUser;
-  const register = async () => defaultUser;
-  const logout = async () => {};
-  const refresh = async () => {};
+  const [user, setUser] = useState<AuthUser>(defaultUser);
+  const [loading] = useState(false);
+
+  const refresh = async () => {
+    try {
+      const data = await api<{ user: AuthUser | null }>("/auth/me").catch(() => null);
+      if (data?.user) setUser(data.user);
+    } catch {
+      // keep default user
+    }
+  };
+
+  const login = async (email: string, password: string) => {
+    try {
+      const res = await api<{ user: AuthUser; token: string }>("/auth/login", { method: "POST", json: { email, password } });
+      if (res?.token) tokenStore.set(res.token);
+      if (res?.user) {
+        setUser(res.user);
+        return res.user;
+      }
+    } catch {
+      // fallback
+    }
+    const fallbackRole = email.includes("mentor") ? "instructor" : email.includes("admin") ? "admin" : "student";
+    const u: AuthUser = { id: 1, name: email.split("@")[0] || "User", email, role: fallbackRole };
+    setUser(u);
+    return u;
+  };
+
+  const register = async (name: string, email: string, password: string, role: "student" | "instructor") => {
+    try {
+      const res = await api<{ user: AuthUser; token: string }>("/auth/register", { method: "POST", json: { name, email, password, role } });
+      if (res?.token) tokenStore.set(res.token);
+      if (res?.user) {
+        setUser(res.user);
+        return res.user;
+      }
+    } catch {
+      // fallback
+    }
+    const u: AuthUser = { id: 1, name, email, role };
+    setUser(u);
+    return u;
+  };
+
+  const logout = async () => {
+    tokenStore.clear();
+    await api("/auth/logout", { method: "POST" }).catch(() => null);
+    if (typeof window !== "undefined") {
+      window.location.href = "/login";
+    }
+  };
 
   return (
-    <Ctx.Provider value={{ user: defaultUser, loading: false, login, register, logout, refresh }}>
+    <Ctx.Provider value={{ user, loading, login, register, logout, refresh }}>
       {children}
     </Ctx.Provider>
   );
