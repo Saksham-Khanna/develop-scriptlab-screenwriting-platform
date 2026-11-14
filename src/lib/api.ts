@@ -16,7 +16,7 @@ export const tokenStore = {
   clear: () => window.localStorage.removeItem(TOKEN_KEY),
 };
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://scriptlab-dmb4.onrender.com";
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://scriptlab-dmb4.onrender.com/api";
 
 export async function api<T = unknown>(path: string, init: RequestInit & { json?: unknown } = {}): Promise<T> {
   const headers: Record<string, string> = { ...(init.headers as Record<string, string>) };
