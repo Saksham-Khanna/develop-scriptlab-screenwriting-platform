@@ -1133,16 +1133,20 @@ async function start() {
   }
 
   // Seed data automatically if database is empty
-  const userCount = await User.countDocuments();
-  if (userCount === 0) {
-    console.log("Database is empty. Running auto-seed...");
-    try {
-      const { seedDatabase } = await import("./seed.js");
-      await seedDatabase(false);
-      console.log("Auto-seed completed successfully.");
-    } catch (e) {
-      console.error("Auto-seed failed", e);
+  try {
+    const userCount = await User.countDocuments();
+    if (userCount === 0) {
+      console.log("Database is empty. Running inline auto-seed...");
+      const passwordHash = await bcrypt.hash("password123", 10);
+      await User.create([
+        { id: 1, name: "Admin User", email: "admin@scriptlab.io", passwordHash, role: "admin", bio: "Platform administrator", isActive: true },
+        { id: 2, name: "Sarah Jenkins", email: "mentor@scriptlab.io", passwordHash, role: "instructor", bio: "WGA writer and showrunner.", isActive: true },
+        { id: 3, name: "Alex Rivera", email: "student@scriptlab.io", passwordHash, role: "student", bio: "Aspiring feature writer.", isActive: true }
+      ]);
+      console.log("Inline auto-seed completed successfully! Default users created.");
     }
+  } catch (e) {
+    console.error("Auto-seed failed", e);
   }
 
   app.listen(PORT, () => {
