@@ -27,12 +27,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       if (data?.user) {
         setUser(data.user);
       } else {
-        const token = tokenStore.get();
-        if (token) {
-          setUser({ id: 1, name: "Admin User", email: "admin@scriptlab.io", role: "admin" });
-        } else {
-          setUser(null);
-        }
+        setUser(null);
       }
     } catch {
       setUser(null);
@@ -81,9 +76,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const logout = async () => {
+    setLoading(true);
     tokenStore.clear();
     setUser(null);
     await api("/auth/logout", { method: "POST" }).catch(() => null);
+    await new Promise((resolve) => setTimeout(resolve, 1500)); // 1.5s smooth loading animation
     if (typeof window !== "undefined") {
       window.location.href = "/";
     }
