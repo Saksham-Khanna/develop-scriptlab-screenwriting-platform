@@ -6,6 +6,7 @@
     "dev:server": "cd backend && npm run dev",
     "seed": "cd backend && npm run seed",
     "build": "next build --webpack",
+    "build:all": "next build --webpack && cd backend && npm run build",
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit"
