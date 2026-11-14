@@ -31,7 +31,7 @@ export async function api<T = unknown>(path: string, init: RequestInit & { json?
     ...init,
     headers,
     body: init.json !== undefined ? JSON.stringify(init.json) : init.body,
-    credentials: "omit",
+    credentials: "include",
     cache: "no-store",
   });
   let payload: { success: boolean; data?: T; error?: string } | null = null;
