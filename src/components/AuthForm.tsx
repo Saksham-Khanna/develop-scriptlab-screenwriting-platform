@@ -68,6 +68,11 @@ export function AuthForm({ mode }: { mode: "login" | "register" }) {
             </Link>
           </p>
 
+          <div className="mt-4 rounded-lg border border-gold/30 bg-gold/5 p-3 text-xs text-parchment flex items-start gap-2">
+            <span className="text-gold mt-0.5">ℹ️</span>
+            <span><strong>Server Notice:</strong> Backend is hosted on Render free tier. First sign-in might take 10-15 seconds to wake up the server if inactive.</span>
+          </div>
+
           <form onSubmit={onSubmit} className="mt-8 space-y-4">
             {mode === "register" && (
               <>
