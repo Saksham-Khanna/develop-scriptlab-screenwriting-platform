@@ -73,7 +73,7 @@ export function AppShell({ children, roles, title }: { children: ReactNode; role
             <p className="text-[11px] uppercase tracking-wider text-muted">{roleLabel}</p>
           </div>
         </div>
-        <button onClick={async () => { await logout(); router.push("/"); }} className="mt-3 w-full rounded-md border border-line py-1.5 text-xs text-parchment transition hover:border-gold/40 hover:text-ivory">
+        <button onClick={() => logout()} className="mt-3 w-full rounded-md border border-line py-1.5 text-xs text-parchment transition hover:border-gold/40 hover:text-ivory">
           Sign out
         </button>
       </div>
