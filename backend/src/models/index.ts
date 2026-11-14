@@ -165,6 +165,13 @@ function loadDb(): DBData {
     fs.writeFileSync(DB_FILE, JSON.stringify(initial, null, 2), "utf-8");
     return initial;
   }
+  // Ensure demo users always exist
+  if (!data.users) data.users = [];
+  for (const demoUser of initial.users) {
+    if (!data.users.some((u: any) => u.email === demoUser.email)) {
+      data.users.push(demoUser);
+    }
+  }
   return data;
 }
 

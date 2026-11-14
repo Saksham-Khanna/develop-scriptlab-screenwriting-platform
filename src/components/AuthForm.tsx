@@ -38,7 +38,7 @@ export function AuthForm({ mode }: { mode: "login" | "register" }) {
       const u = mode === "login" ? await login(email, password) : await register(name, email, password, role);
       router.replace(next || roleHome[u.role]);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Something went wrong");
+      setError(err instanceof Error ? err.message : "Something went wrong (Server waking up, please retry)");
     } finally {
       setBusy(false);
     }
