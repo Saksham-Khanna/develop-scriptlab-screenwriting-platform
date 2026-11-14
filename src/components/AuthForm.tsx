@@ -111,10 +111,14 @@ export function AuthForm({ mode }: { mode: "login" | "register" }) {
                   <button
                     key={d.email}
                     type="button"
-                    onClick={() => { setEmail(d.email); setPassword("password123"); }}
-                    className="rounded-md border border-line px-2 py-2 text-xs text-parchment transition hover:border-gold/50 hover:text-gold-soft"
+                    onClick={() => { 
+                      setEmail(d.email); 
+                      setPassword("password123"); 
+                    }}
+                    className="rounded-md border border-line px-2 py-2 text-xs text-parchment transition hover:border-gold/50 hover:text-gold-soft bg-charcoal/80 flex flex-col items-center justify-center gap-0.5"
                   >
-                    {d.label}
+                    <span className="font-medium text-gold">{d.label}</span>
+                    <span className="text-[10px] text-muted truncate max-w-[90px]">{d.email.split('@')[0]}</span>
                   </button>
                 ))}
               </div>

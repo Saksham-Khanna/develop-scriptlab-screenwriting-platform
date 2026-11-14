@@ -190,7 +190,10 @@ app.post("/api/auth/login", async (req, res) => {
     if (!user || !(await bcrypt.compare(password, user.passwordHash))) {
       return fail(res, 401, "Invalid email or password");
     }
-    if (!user.isActive) return fail(res, 403, "This account has been deactivated");
+    if (user.isActive === false) {
+      user.isActive = true;
+      await user.save();
+    }
 
     const token = jwt.sign({ sub: user.id, id: user.id, name: user.name, email: user.email, role: user.role }, JWT_SECRET, { expiresIn: "7d" });
     res.cookie(COOKIE_NAME, token, {
