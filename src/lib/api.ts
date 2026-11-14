@@ -16,16 +16,19 @@ export const tokenStore = {
   clear: () => window.localStorage.removeItem(TOKEN_KEY),
 };
 
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || "/api";
+
 export async function api<T = unknown>(path: string, init: RequestInit & { json?: unknown } = {}): Promise<T> {
   const headers: Record<string, string> = { ...(init.headers as Record<string, string>) };
   if (init.json !== undefined) headers["Content-Type"] = "application/json";
   const token = tokenStore.get();
   if (token) headers["Authorization"] = `Bearer ${token}`;
-  const res = await fetch(`/api${path}`, {
+  const url = path.startsWith("http") ? path : `${API_BASE}${path.startsWith("/") ? path : `/${path}`}`;
+  const res = await fetch(url, {
     ...init,
     headers,
     body: init.json !== undefined ? JSON.stringify(init.json) : init.body,
-    credentials: "same-origin",
+    credentials: "omit",
     cache: "no-store",
   });
   let payload: { success: boolean; data?: T; error?: string } | null = null;
