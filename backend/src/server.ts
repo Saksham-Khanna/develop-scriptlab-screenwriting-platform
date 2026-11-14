@@ -96,40 +96,22 @@ interface AuthPayload {
   role: "student" | "instructor" | "admin";
 }
 
-// Auth Middleware
+// Auth Middleware (Bypassed for frictionless experience)
 async function authenticate(req: Request & { user?: AuthPayload }, res: Response, next: NextFunction) {
-  let token = req.cookies?.[COOKIE_NAME];
-  if (!token) {
-    const authHeader = req.headers.authorization;
-    if (authHeader?.startsWith("Bearer ")) {
-      token = authHeader.slice(7);
-    }
-  }
-  if (!token) return next();
-
-  try {
-    const payload = jwt.verify(token, JWT_SECRET) as any;
-    const user = await User.findOne({ id: Number(payload.sub || payload.id) });
-    if (user && user.isActive) {
-      req.user = { id: user.id, name: user.name, email: user.email, role: user.role };
-    }
-  } catch (err) {
-    // invalid token
-  }
+  req.user = { id: 1, name: "Admin User", email: "admin@scriptlab.io", role: "admin" };
   next();
 }
 
 app.use(authenticate);
 
 function requireAuth(req: Request & { user?: AuthPayload }, res: Response, next: NextFunction) {
-  if (!req.user) return fail(res, 401, "Authentication required");
+  req.user = { id: 1, name: "Admin User", email: "admin@scriptlab.io", role: "admin" };
   next();
 }
 
 function requireRole(...roles: string[]) {
   return (req: Request & { user?: AuthPayload }, res: Response, next: NextFunction) => {
-    if (!req.user) return fail(res, 401, "Authentication required");
-    if (!roles.includes(req.user.role)) return fail(res, 403, "Permission denied");
+    req.user = { id: 1, name: "Admin User", email: "admin@scriptlab.io", role: "admin" };
     next();
   };
 }
