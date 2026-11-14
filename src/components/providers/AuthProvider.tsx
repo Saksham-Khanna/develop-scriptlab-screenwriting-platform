@@ -78,11 +78,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const logout = async () => {
     setLoading(true);
     tokenStore.clear();
+    if (typeof window !== "undefined") {
+      try {
+        localStorage.clear();
+        sessionStorage.clear();
+      } catch {}
+    }
     setUser(null);
     await api("/auth/logout", { method: "POST" }).catch(() => null);
-    await new Promise((resolve) => setTimeout(resolve, 1500)); // 1.5s smooth loading animation
+    await new Promise((resolve) => setTimeout(resolve, 1500)); // 1.5s smooth loading spinner
     if (typeof window !== "undefined") {
-      window.location.href = "/";
+      window.location.href = "/login";
     }
   };
 
